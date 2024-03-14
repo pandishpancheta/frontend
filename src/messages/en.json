@@ -1,0 +1,15 @@
+{
+  "navigation": {
+    "home": "Home",
+    "login": "Login",
+    "profile": {
+      "images": "My images",
+      "logout": "Logout",
+      "orders": "My orders",
+      "profile": "My profile"
+    },
+    "search": "Search",
+    "signup": "Sign up",
+    "users": "Users"
+  }
+}
