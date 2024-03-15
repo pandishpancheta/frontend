@@ -1,6 +1,5 @@
-import { unstable_setRequestLocale } from 'next-intl/server';
-import { IconTrash } from '@tabler/icons-react';
 import EditSocials from '@/app/[locale]/profile/socials';
+import { unstable_setRequestLocale } from 'next-intl/server';
 
 const ProfilePage = ({
   params: { locale },

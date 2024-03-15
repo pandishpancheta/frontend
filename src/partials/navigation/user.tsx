@@ -3,6 +3,7 @@
 import DropdownButton from '@/components/navigation/dropdown-button';
 import LinkComponent from '@/components/navigation/link-component';
 import { USER_PAGES } from '@/constants/pages';
+import { useCart } from '@/context/cart.context';
 import useDropdown from '@/hooks/useDropdown';
 import {
   IconPlus,
@@ -12,9 +13,6 @@ import {
 } from '@tabler/icons-react';
 import { useTranslations } from 'next-intl';
 import Link from 'next/link';
-import useSWR from 'swr';
-import { fetcher } from '@/utils/fetcher';
-import { useCart } from '@/context/cart.context';
 
 const UserNavigation = () => {
   const {

@@ -1,7 +1,6 @@
-import { unstable_setRequestLocale } from 'next-intl/server';
-import ShareButton from '@/components/share-button';
-import { IconShoppingCart } from '@tabler/icons-react';
 import CartButton from '@/components/cart-button';
+import ShareButton from '@/components/share-button';
+import { unstable_setRequestLocale } from 'next-intl/server';
 
 const ImagePage = ({
   params: { locale, uuid },

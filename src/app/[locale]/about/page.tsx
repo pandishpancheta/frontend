@@ -1,9 +1,9 @@
 import { unstable_setRequestLocale } from 'next-intl/server';
 
 const AboutPage = ({
-  props: { locale },
+  params: { locale },
 }: {
-  props: {
+  params: {
     locale: string;
   };
 }) => {

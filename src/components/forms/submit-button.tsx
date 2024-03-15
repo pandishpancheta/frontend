@@ -19,7 +19,7 @@ const SubmitButton = ({
   return (
     <button
       type='submit'
-      className='bg-accent flex shrink-0 cursor-pointer items-center justify-center gap-2 break-keep rounded-lg px-6 py-3 font-semibold text-text transition-all hover:scale-105'
+      className='flex shrink-0 cursor-pointer items-center justify-center gap-2 break-keep rounded-lg bg-accent px-6 py-3 font-semibold text-text transition-all hover:scale-105'
       disabled={pending}
       aria-disabled={pending}
       onClick={onClick}
@@ -28,7 +28,7 @@ const SubmitButton = ({
         <>
           <svg
             aria-hidden='true'
-            className='h-5 w-5 animate-spin fill-green text-text'
+            className='fill-green h-5 w-5 animate-spin text-text'
             viewBox='0 0 100 101'
             fill='none'
             xmlns='http://www.w3.org/2000/svg'
