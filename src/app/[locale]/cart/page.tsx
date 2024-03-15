@@ -1,16 +1,10 @@
 'use client';
 
 import { useCart } from '@/context/cart.context';
+import { IconShoppingCartOff, IconTrash } from '@tabler/icons-react';
 import Link from 'next/link';
-import {
-  IconGardenCartOff,
-  IconShoppingCartOff,
-  IconTrash,
-} from '@tabler/icons-react';
 
-const CartPage = ({
-  params: { locale },
-}: {
+const CartPage = ({}: {
   params: {
     locale: string;
   };

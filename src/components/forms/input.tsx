@@ -59,7 +59,7 @@ const Input = ({
         <button
           onClick={dropDownButton}
           type='button'
-          className='absolute bottom-2 right-2 rounded px-4 py-2 font-bold transition-colors duration-200 ease-in-out hover:text-blue'
+          className='hover:text-blue absolute bottom-2 right-2 rounded px-4 py-2 font-bold transition-colors duration-200 ease-in-out'
         >
           <IconChevronDown size={24} />
         </button>

@@ -1,11 +1,8 @@
 'use client';
-import { unstable_setRequestLocale } from 'next-intl/server';
 import { IconPhoto } from '@tabler/icons-react';
 import { ChangeEvent, useState } from 'react';
 
-const CreatePage = ({
-  params: { locale },
-}: {
+const CreatePage = ({}: {
   params: {
     locale: string;
   };

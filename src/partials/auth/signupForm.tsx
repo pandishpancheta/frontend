@@ -1,17 +1,15 @@
 'use client';
 
-import { useFormState } from 'react-dom';
 import { useTranslations } from 'next-intl';
+import { useFormState } from 'react-dom';
 
-import Input from '@/components/forms/input';
 import FormErrors from '@/components/forms/form-errors';
+import Input from '@/components/forms/input';
 import SubmitButton from '@/components/forms/submit-button';
 
-import { loginAction } from '@/actions/login.auth';
-import React from 'react';
-import Link from 'next/link';
-import PasswordInput from '@/components/forms/password.input';
 import { signupAction } from '@/actions/signup.auth';
+import PasswordInput from '@/components/forms/password.input';
+import Link from 'next/link';
 
 const initialState = {
   messages: [],
