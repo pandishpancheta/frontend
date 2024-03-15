@@ -1,12 +1,16 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
+
 import '@/styles/globals.css';
+import 'react-toastify/dist/ReactToastify.css';
 
 import { locales } from '@/constants/locales';
 import { notFound } from 'next/navigation';
 import { unstable_setRequestLocale } from 'next-intl/server';
 import { NextIntlClientProvider, useMessages } from 'next-intl';
 import Navigation from '@/partials/navigation';
+import { CartProvider } from '@/context/cart.context';
+import { ToastContainer } from 'react-toastify';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -35,13 +39,16 @@ export default function LocaleLayout({
   const messages = useMessages();
 
   return (
-    <html lang={locale} className='dark'>
+    <html lang={locale} className='dark h-full'>
       <body
-        className={`${inter.className} flex flex-row bg-background text-text`}
+        className={`${inter.className} flex min-h-full flex-row bg-background text-text`}
       >
         <NextIntlClientProvider messages={messages}>
-          <Navigation />
-          {children}
+          <CartProvider>
+            <Navigation />
+            {children}
+            <ToastContainer theme={'dark'} position={'bottom-right'} />
+          </CartProvider>
         </NextIntlClientProvider>
       </body>
     </html>
