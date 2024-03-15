@@ -1,4 +1,28 @@
 {
+  "auth": {
+    "login": {
+      "email": "имейл",
+      "no_account": "Регистрирай се!",
+      "password": "парола",
+      "pending": "Влизане",
+      "submit": "Влез",
+      "title": "Вход"
+    },
+    "signup": {
+      "confirmPassword": "потвърди парола",
+      "email": "имейл",
+      "have_account": "Влез",
+      "password": "парола",
+      "pending": "Регистриране",
+      "submit": "Регистрация",
+      "title": "Регистрация",
+      "username": "потребителско име"
+    }
+  },
+  "common": {
+    "copied": "Копирано!",
+    "share": "Сподели"
+  },
   "navigation": {
     "home": "Начало",
     "login": "Вход",

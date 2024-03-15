@@ -1,4 +1,28 @@
 {
+  "auth": {
+    "login": {
+      "email": "email",
+      "no_account": "Sign up!",
+      "password": "password",
+      "pending": "Logging in",
+      "submit": "Login",
+      "title": "Log in"
+    },
+    "signup": {
+      "confirmPassword": "confirm password",
+      "email": "email",
+      "have_account": "Login",
+      "password": "password",
+      "pending": "Signing up",
+      "submit": "Sign up",
+      "title": "Sign up",
+      "username": "username"
+    }
+  },
+  "common": {
+    "copied": "Copied!",
+    "share": "Share"
+  },
   "navigation": {
     "home": "Home",
     "login": "Login",
