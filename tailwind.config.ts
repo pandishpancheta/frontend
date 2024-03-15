@@ -17,8 +17,7 @@ const config: Config = {
       current: 'current',
       background: 'rgba(var(--background),<alpha-value>)',
       primary: 'rgba(var(--primary),<alpha-value>)',
-      blue: '#06A7F5',
-      green: '#28EDA3',
+      accent: '#2F0648',
       error: {
         primary: '#d92017',
         secondary: '#b20500',

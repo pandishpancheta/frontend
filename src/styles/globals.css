@@ -1,0 +1,101 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+    .no-scrollbar::-webkit-scrollbar {
+        display: none;
+    }
+
+    .no-scrollbar {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+}
+
+@layer base {
+    input[type="number"]::-webkit-inner-spin-button,
+    input[type="number"]::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+}
+
+:root {
+    --background: 238, 244, 246;
+    --primary: 254, 254, 254;
+    --stroke: #e6e6e6;
+    --stroke-secondary: #d9d9d9;
+    --text: #262626;
+    --text-secondary: #525252;
+    --text-important: #0b0b0b;
+}
+
+.dark {
+    --background: 5, 5, 33;
+    --primary: 52, 54, 62;
+    --stroke: #41434e;
+    --stroke-secondary: #525252;
+    --text: #d9d9d9;
+    --text-secondary: #9b9b9b;
+    --text-important: #eeeeee;
+}
+
+::-webkit-scrollbar {
+    width: 0.5rem;
+    height: 0.5rem;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+    margin: 1rem 0.5rem;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 2rem;
+    border: var(--stroke) solid 1px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--stroke);
+}
+
+/* ================= */
+
+.masonry {
+    column-count: 1;
+    column-gap: 2rem;
+}
+
+@media (min-width: 768px) {
+    .masonry {
+        column-count: 2;
+    }
+}
+
+@media (min-width: 1024px) {
+    .masonry {
+        column-count: 3;
+    }
+}
+
+.item {
+    display: inline-block;
+    width: 100%;
+    box-sizing: border-box;
+    break-inside: avoid;
+    margin-bottom: 2rem;
+}
+
+/* Styles for hovered and selected icons */
+.icon:hover {
+    color: rgb(214, 110, 40);
+}
+
+.icon--upvoted {
+    color: rgb(214, 159, 40);
+}
+
+.icon--bookmarked {
+    color: rgb(230, 230, 55);
+}
