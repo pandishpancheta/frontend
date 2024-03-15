@@ -32,10 +32,10 @@
 }
 
 .dark {
-    --background: 5, 5, 33;
-    --primary: 52, 54, 62;
-    --stroke: #41434e;
-    --stroke-secondary: #525252;
+    --background: 17, 5, 33;
+    --primary: 21, 6, 43;
+    --stroke: #2f0648;
+    --stroke-secondary: #400962;
     --text: #d9d9d9;
     --text-secondary: #9b9b9b;
     --text-important: #eeeeee;
@@ -83,19 +83,6 @@
     display: inline-block;
     width: 100%;
     box-sizing: border-box;
-    break-inside: avoid;
+    break-inside: avoid-column;
     margin-bottom: 2rem;
-}
-
-/* Styles for hovered and selected icons */
-.icon:hover {
-    color: rgb(214, 110, 40);
-}
-
-.icon--upvoted {
-    color: rgb(214, 159, 40);
-}
-
-.icon--bookmarked {
-    color: rgb(230, 230, 55);
 }
