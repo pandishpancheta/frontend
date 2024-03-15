@@ -11,11 +11,14 @@ const AuthNavigation = () => {
       <LinkComponent href='/auth/signup'>{t('signup')}</LinkComponent>
       <Link
         href='/auth/login'
-        className='border-white text-white flex items-center justify-center rounded-md border-2 px-6 py-3 text-base font-semibold transition duration-300 ease-in-out hover:border-primary hover:bg-primary lg:px-4 xl:px-6'
+        className='border-white text-white group flex items-center justify-center rounded-md border-2 px-6 py-3 text-base font-semibold transition duration-300 ease-in-out hover:border-stroke-secondary hover:text-stroke-secondary lg:px-4 xl:px-6'
       >
         {t('login')}
         <span className='pl-2'>
-          <IconLock size={24} />
+          <IconLock
+            size={24}
+            className='transition-colors duration-300 ease-in-out group-hover:text-stroke-secondary'
+          />
         </span>
       </Link>
     </div>
