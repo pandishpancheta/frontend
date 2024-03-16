@@ -6,6 +6,11 @@ export type User = {
   id: string;
   username: string;
   avatar: string;
+  contact: {
+    email?: string; // facebook: string;
+    phone?: string; // tiktok: string;
+    instagram?: string;
+  };
 };
 
 type UserData = {

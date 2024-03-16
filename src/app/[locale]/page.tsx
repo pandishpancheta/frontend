@@ -1,7 +1,7 @@
 import ImagesGrid, { ImageType } from '@/partials/images-grid';
 import { API_URL } from '@/configs/api';
 
-type ImagesData = {
+export type ImagesData = {
   listings: ImageType[];
 };
 
