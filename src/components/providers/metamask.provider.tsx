@@ -14,7 +14,7 @@ const MetamaskProvider = ({ children }: { children: React.ReactNode }) => {
             debug={true}
                         sdkOptions={{
                           dappMetadata: {
-                            name: "The Bazaar",
+                            name: "StockChain",
                             url: href,
                           },
                         }}
