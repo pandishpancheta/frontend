@@ -1,5 +1,3 @@
-import { AxiosResponse } from 'axios';
-import { axiosInstance } from '@/configs/axios';
 import { getAuth } from '@/actions/common.auth';
 import { API_URL } from '@/configs/api';
 

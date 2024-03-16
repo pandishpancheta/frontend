@@ -6,7 +6,11 @@ type ImagesData = {
 };
 
 const fetchImages = async () => {
-  const res = await fetch(API_URL + '/listings/');
+  const res = await fetch(API_URL + '/listings/', {
+    next: {
+      revalidate: 60,
+    },
+  });
   const data = (await res.json()) as ImagesData;
   return data.listings;
 };

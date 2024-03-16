@@ -7,7 +7,7 @@ type ImageListingProps = {
   description: string;
   tags: string[];
   username: string;
-  created_at: string;
+  price: number;
 };
 
 const ImageListing = ({
@@ -16,7 +16,7 @@ const ImageListing = ({
   description,
   tags,
   username,
-  created_at,
+  price,
 }: ImageListingProps) => (
   <div className='relative mb-4 block cursor-pointer break-inside-avoid'>
     <div className='mb-2 flex break-inside-avoid-column flex-col items-center rounded-xl border border-stroke bg-primary p-4 transition-colors hover:border-stroke-secondary'>
@@ -35,7 +35,12 @@ const ImageListing = ({
         <CartButton uuid={uuid} />
       </div>
       <div className='mt-2 flex w-full flex-col items-start justify-start gap-2'>
-        <p className='line-clamp-3 text-lg font-semibold'>{description}</p>
+        <div className='flex flex-col gap-0'>
+          <p className='line-clamp-3 text-lg font-semibold'>{description}</p>
+          <p className='text-sm font-semibold text-text-secondary'>
+            @{username}
+          </p>
+        </div>
         <div
           className='w-full shrink-0 bg-stroke-secondary opacity-50'
           style={{
@@ -43,8 +48,7 @@ const ImageListing = ({
           }}
         />
         <div className='flex items-end justify-between'>
-          <p className='text-md font-semibold'>@{username}</p>
-          <p className='text-xs text-text-secondary'>{created_at}</p>
+          <p className='text-md font-semibold'>ETH {price}</p>
         </div>
       </div>
       <Link

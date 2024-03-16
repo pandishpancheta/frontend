@@ -8,7 +8,11 @@ import { API_URL } from '@/configs/api';
 import { User } from '@/app/[locale]/users/page';
 
 const getUser = async (username: string) => {
-  const data = await fetch(`${API_URL}/users/${username}`);
+  const data = await fetch(`${API_URL}/users/usernames/${username}`, {
+    next: {
+      revalidate: 60,
+    },
+  });
   return (await data.json()) as User;
 };
 

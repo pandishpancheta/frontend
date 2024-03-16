@@ -13,7 +13,11 @@ type UserData = {
 };
 
 const getUsers = async () => {
-  const response = await fetch(`${API_URL}/users/`);
+  const response = await fetch(`${API_URL}/users/`, {
+    next: {
+      revalidate: 60,
+    },
+  });
   const users = (await response.json()) as UserData;
   return users.users;
 };
