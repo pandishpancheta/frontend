@@ -1,54 +1,34 @@
-"use client";
+'use client';
 import ImageListing from '@/components/image-listing';
 import { useEffect, useState } from 'react';
+import { IPFS_URL } from '@/constants/ipfs';
 
-const ImagesGrid = () => {
-  const images = [
-    'https://via.placeholder.com/150x250',
-    'https://via.placeholder.com/150x150',
-    'https://via.placeholder.com/150x100',
-    'https://via.placeholder.com/150x200',
-    'https://via.placeholder.com/150x250',
-    'https://via.placeholder.com/150x150',
-    'https://via.placeholder.com/150x100',
-    'https://via.placeholder.com/150x200',
-    'https://via.placeholder.com/150x250',
-    'https://via.placeholder.com/150x150',
-    'https://via.placeholder.com/150x100',
-    'https://via.placeholder.com/150x200',
-    'https://via.placeholder.com/150x250',
-    'https://via.placeholder.com/150x150',
-    'https://via.placeholder.com/150x100',
-    'https://via.placeholder.com/150x200',
-  ];
+export type ImageType = {
+  id: string;
+  url: string;
+  description: string;
+  tag_names?: string[];
+  username: string;
+  created_at: string;
+};
 
-  const [listings, setListings] = useState([]);
-
-  useEffect(() => {
-    const fetchListings = async () => {
-      const res = await fetch('http://mail.kaloyan.tech:50050/listings/');
-      const data = await res.json();
-      setListings(data.listings);
-    }
-
-    fetchListings();
-  }, [])
-
+const ImagesGrid = ({ images }: { images: ImageType[] }) => {
   return (
     <div className='container mx-auto px-0 md:px-4'>
       <div className='flex flex-col items-center'>
         <div className='masonry mt-8 w-full px-0 md:px-4'>
-          {listings.length > 0 && listings.map((listing: any, index) => (
-            <ImageListing
-              uuid={listing.id.toString()}
-              url={"https://emerald-efficient-caterpillar-983.mypinata.cloud/ipfs/" + listing.uri}
-              description={`${listing?.description || 'No description'}`}
-              tags={listing?.tag_names || []}
-              username={listing?.username}
-              created_at={listing?.created_at}
-              key={index.toString()}
-            />
-          ))}
+          {images.length > 0 &&
+            images.map((image: any) => (
+              <ImageListing
+                key={image.id.toString()}
+                uuid={image.id.toString()}
+                url={IPFS_URL + image.uri}
+                description={`${image?.description || 'No description'}`}
+                tags={image?.tag_names || []}
+                username={image?.username}
+                created_at={image?.created_at}
+              />
+            ))}
         </div>
       </div>
     </div>
