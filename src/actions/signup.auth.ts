@@ -15,7 +15,8 @@ const signup = async (
 ): Promise<boolean> => {
   noStore();
 
-  const res = await fetch(`${API_URL}/auth/login`, {
+  console.log('API_URL', API_URL);
+  const res = await fetch(`${API_URL}/auth/register`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -28,9 +29,9 @@ const signup = async (
   });
 
   if (res.ok) {
-    const { token, refresh } = (await res.json()) as AuthResponse;
+    const { jwt } = (await res.json()) as AuthResponse;
 
-    setTokens(token, refresh);
+    setTokens(jwt, 'refresh');
     return true;
   }
 

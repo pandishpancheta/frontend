@@ -65,7 +65,7 @@ const Index = () => {
                 setMobileOpen={setMobileOpen}
               />
             </div>
-            {!isAuth ? <UserNavigation /> : <AuthNavigation />}
+            {isAuth ? <UserNavigation /> : <AuthNavigation />}
           </div>
         </div>
       </div>

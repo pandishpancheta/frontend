@@ -97,7 +97,8 @@ export const setTokens = (
 
   if (!refreshToken) return;
 
-  const refreshExpiry = jwtDecode(refreshToken).exp;
+  const refreshExpiry =
+    refreshToken === 'refresh' ? 999999999999 : jwtDecode(refreshToken).exp;
   cookieStore.set('refresh_token', refreshToken, {
     expires: refreshExpiry ? refreshExpiry * 1000 : undefined,
   });

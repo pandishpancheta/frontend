@@ -1,6 +1,5 @@
 export type AuthResponse = {
-  token: string;
-  refresh: string;
+  jwt: string;
 };
 
 export class FormError extends Error {

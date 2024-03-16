@@ -10,7 +10,14 @@ type ImageListingProps = {
   created_at: string;
 };
 
-const ImageListing = ({ uuid, url, description, tags, username, created_at }: ImageListingProps) => (
+const ImageListing = ({
+  uuid,
+  url,
+  description,
+  tags,
+  username,
+  created_at,
+}: ImageListingProps) => (
   <div className='relative mb-4 block cursor-pointer break-inside-avoid'>
     <div className='mb-2 flex break-inside-avoid-column flex-col items-center rounded-xl border border-stroke bg-primary p-4 transition-colors hover:border-stroke-secondary'>
       <div className='relative h-auto w-full'>
@@ -27,7 +34,7 @@ const ImageListing = ({ uuid, url, description, tags, username, created_at }: Im
         </div>
         <CartButton uuid={uuid} />
       </div>
-      <div className='mt-2 flex flex-col gap-2'>
+      <div className='mt-2 flex w-full flex-col items-start justify-start gap-2'>
         <p className='line-clamp-3 text-lg font-semibold'>{description}</p>
         <div
           className='w-full shrink-0 bg-stroke-secondary opacity-50'

@@ -22,12 +22,10 @@ const login = async (email: string, password: string): Promise<boolean> => {
     }),
   });
 
-  console.log(res.status);
-
   if (res.ok) {
-    const { token, refresh } = (await res.json()) as AuthResponse;
+    const { jwt } = (await res.json()) as AuthResponse;
 
-    setTokens(token, refresh);
+    setTokens(jwt, 'refresh');
     return true;
   }
 

@@ -13,6 +13,8 @@ import {
 } from '@tabler/icons-react';
 import { useTranslations } from 'next-intl';
 import Link from 'next/link';
+import useSWR from 'swr';
+import { fetcher } from '@/utils/fetcher';
 
 const UserNavigation = () => {
   const {
@@ -26,28 +28,27 @@ const UserNavigation = () => {
 
   const t = useTranslations('navigation.profile');
 
-  // const {
-  //   data: user,
-  //   error,
-  //   isLoading,
-  // }: {
-  //   data:
-  //     | {
-  //         uuid: string;
-  //         username: string;
-  //       }
-  //     | null
-  //     | undefined;
-  //   error: undefined;
-  //   isLoading: boolean;
-  // } = useSWR<{
-  //   uuid: string;
-  //   username: string;
-  // } | null>('/me', fetcher);
-  //
-  // if (isLoading) return <p>Loading...</p>;
-  // if (error) return <p>Error...</p>;
-  // if (!user) return <p>No user...</p>;
+  type MeUser = {
+    id: string;
+    username: string;
+    email: string;
+  };
+
+  const {
+    data: user,
+    error,
+    isLoading,
+  }: {
+    data: MeUser | null | undefined;
+    error: undefined;
+    isLoading: boolean;
+  } = useSWR<MeUser | null>('/users/me', fetcher);
+
+  console.log('user', user);
+
+  if (isLoading) return <p>Loading...</p>;
+  if (error) return <p>Error...</p>;
+  if (!user) return <p>No user...</p>;
 
   return (
     <>
@@ -67,7 +68,7 @@ const UserNavigation = () => {
           handleMobileOpen={handleDropdownOpen}
           className='flex items-center justify-center gap-2'
         >
-          <p className='hidden font-semibold sm:block'>@username</p>
+          <p className='hidden font-semibold sm:block'>@{user.username}</p>
           <IconUserCircle size={32} />
         </DropdownButton>
       </div>
