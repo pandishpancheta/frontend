@@ -1,4 +1,4 @@
-const bytes32 = require("p");
+const bytes32 = require("bytes32");
 
 export const messageToBytes32 = (message: string): string => {
     const cleanedUuid = message.replace(/-/g, "");
