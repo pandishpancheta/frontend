@@ -1,5 +1,6 @@
 "use client";
 import ImageListing from '@/components/image-listing';
+import { API_URL } from '@/configs/api';
 import { useEffect, useState } from 'react';
 
 const ImagesGrid = () => {
@@ -26,7 +27,7 @@ const ImagesGrid = () => {
 
   useEffect(() => {
     const fetchListings = async () => {
-      const res = await fetch('http://mail.kaloyan.tech:50050/listings/');
+      const res = await fetch(`${API_URL}/listings/`);
       const data = await res.json();
       setListings(data.listings);
     }
