@@ -10,6 +10,8 @@
   },
   "dependencies": {
     "@formkit/auto-animate": "^0.8.1",
+    "@metamask/providers": "^16.0.0",
+    "@metamask/sdk-react": "^0.17.2",
     "@tabler/icons-react": "^3.0.1",
     "axios": "^1.6.7",
     "eslint-plugin-prettier": "^5.1.3",
