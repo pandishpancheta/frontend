@@ -6,9 +6,11 @@ type ImageListingProps = {
   url: string;
   description: string;
   tags: string[];
+  username: string;
+  created_at: string;
 };
 
-const ImageListing = ({ uuid, url, description, tags }: ImageListingProps) => (
+const ImageListing = ({ uuid, url, description, tags, username, created_at }: ImageListingProps) => (
   <div className='relative mb-4 block cursor-pointer break-inside-avoid'>
     <div className='mb-2 flex break-inside-avoid-column flex-col items-center rounded-xl border border-stroke bg-primary p-4 transition-colors hover:border-stroke-secondary'>
       <div className='relative h-auto w-full'>
@@ -34,8 +36,8 @@ const ImageListing = ({ uuid, url, description, tags }: ImageListingProps) => (
           }}
         />
         <div className='flex items-end justify-between'>
-          <p className='text-md font-semibold'>@username</p>
-          <p className='text-xs text-text-secondary'>14-03-2024</p>
+          <p className='text-md font-semibold'>@{username}</p>
+          <p className='text-xs text-text-secondary'>{created_at}</p>
         </div>
       </div>
       <Link

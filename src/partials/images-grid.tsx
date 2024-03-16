@@ -1,4 +1,6 @@
+"use client";
 import ImageListing from '@/components/image-listing';
+import { useEffect, useState } from 'react';
 
 const ImagesGrid = () => {
   const images = [
@@ -20,16 +22,30 @@ const ImagesGrid = () => {
     'https://via.placeholder.com/150x200',
   ];
 
+  const [listings, setListings] = useState([]);
+
+  useEffect(() => {
+    const fetchListings = async () => {
+      const res = await fetch('http://mail.kaloyan.tech:50050/listings/');
+      const data = await res.json();
+      setListings(data.listings);
+    }
+
+    fetchListings();
+  }, [])
+
   return (
     <div className='container mx-auto px-0 md:px-4'>
       <div className='flex flex-col items-center'>
         <div className='masonry mt-8 w-full px-0 md:px-4'>
-          {images.map((image, index) => (
+          {listings.length > 0 && listings.map((listing: any, index) => (
             <ImageListing
-              uuid={index.toString()}
-              url={image}
-              description={`${index.toString()}Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.`}
-              tags={['tag1', 'tag2', 'tag3'].slice(0, 3)}
+              uuid={listing.id.toString()}
+              url={"https://emerald-efficient-caterpillar-983.mypinata.cloud/ipfs/" + listing.uri}
+              description={`${listing?.description || 'No description'}`}
+              tags={listing?.tag_names || []}
+              username={listing?.username}
+              created_at={listing?.created_at}
               key={index.toString()}
             />
           ))}
