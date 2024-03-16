@@ -6,6 +6,7 @@ import { isEmpty } from 'lodash';
 import Input from '@/components/forms/input';
 import { API_URL } from '@/configs/api';
 import { getAuth } from '@/actions/common.auth';
+import axios from 'axios';
 
 const CreatePage = ({}: {
   params: {
@@ -61,21 +62,16 @@ const CreatePage = ({}: {
 
     console.log('uploading');
 
-    const res = await fetch(`${API_URL}/listings/`, {
-      method: 'POST',
+    const {data} = await axios.postForm(`${API_URL}/listings/`, formData, {
       headers: {
-        'Content-Type': 'multipart/form-data',
         Authorization: auth,
       },
-      body: formData,
     });
 
-    console.log('stat', res.status);
-    if (res.ok) {
-      console.log('Uploaded');
-    }
+    console.log('stat', data.status);
+    
 
-    console.log(res);
+    console.log(data);
     setLock(false);
   };
 
