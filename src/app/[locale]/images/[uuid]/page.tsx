@@ -1,6 +1,7 @@
 "use client";
 import CartButton from '@/components/cart-button';
 import ShareButton from '@/components/share-button';
+import { API_URL } from '@/configs/api';
 import { unstable_setRequestLocale } from 'next-intl/server';
 import { useEffect, useState } from 'react';
 
@@ -19,7 +20,7 @@ const ImagePage = ({
   useEffect(() => {
     const fetchListing = async () => {
       const res = await fetch(
-        `http://mail.kaloyan.tech:50050/listings/${uuid}`
+        `${API_URL}/listings/${uuid}`
       );
       const data = await res.json();
       setListing(data);
