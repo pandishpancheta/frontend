@@ -4,8 +4,12 @@ import { ChangeEvent, useState } from 'react';
 import TagInput from '@/components/tag-input';
 import { isEmpty } from 'lodash';
 import Input from '@/components/forms/input';
-import { API_URL } from '@/configs/api';
+import { ABI, API_URL } from '@/configs/api';
 import { getAuth } from '@/actions/common.auth';
+import axios from 'axios';
+import { useSDK } from '@metamask/sdk-react';
+import { ethers, parseEther } from 'ethers';
+import { messageToBytes32 } from '@/utils/helpers';
 
 const CreatePage = ({}: {
   params: {
@@ -16,6 +20,10 @@ const CreatePage = ({}: {
   const [tags, setTags] = useState<string[]>([]);
   const [price, setPrice] = useState<number>(0);
   const [lock, setLock] = useState<boolean>(false);
+
+  const { sdk, connected } = useSDK();
+
+  const [address, setAddress] = useState<string>("");
 
   const handleAddTag = (tag: string) => {
     if (tags.includes(tag) || isEmpty(tag)) return;
@@ -61,21 +69,50 @@ const CreatePage = ({}: {
 
     console.log('uploading');
 
-    const res = await fetch(`${API_URL}/listings/`, {
-      method: 'POST',
+    const {data} = await axios.postForm(`${API_URL}/listings/`, formData, {
       headers: {
-        'Content-Type': 'multipart/form-data',
         Authorization: auth,
       },
-      body: formData,
     });
 
-    console.log('stat', res.status);
-    if (res.ok) {
-      console.log('Uploaded');
-    }
+    console.log('stat', data.status);
+    
 
-    console.log(res);
+    console.log(data);
+
+
+    if (!connected) {
+          try {
+            const accounts = await sdk?.connect();
+            if (accounts) {
+              // @ts-expect-error
+              setAccount(accounts?.[0]);
+            }
+          } catch (err) {
+            console.warn(`failed to connect..`, err);
+          }
+        } else if (address === "") {
+          setAddress(window.ethereum?.selectedAddress!);
+        }
+        if (typeof window.ethereum === "undefined") {
+          return;
+        }
+
+        const provider = new ethers.BrowserProvider(window.ethereum!);
+        const signer = await provider.getSigner();
+        const contract = new ethers.Contract(
+          "",
+          ABI,
+          signer
+        );
+        const itemId = messageToBytes32(data.id);
+
+        const value = parseEther(price.toString());
+        const result = await contract.addItem(
+          itemId, data.uri, value
+        )
+        
+
     setLock(false);
   };
 

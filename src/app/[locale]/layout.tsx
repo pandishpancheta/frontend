@@ -11,6 +11,7 @@ import { NextIntlClientProvider, useMessages } from 'next-intl';
 import Navigation from '@/partials/navigation';
 import { CartProvider } from '@/context/cart.context';
 import { ToastContainer } from 'react-toastify';
+import MetamaskProvider from '@/components/providers/metamask.provider';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -44,11 +45,13 @@ export default function LocaleLayout({
         className={`${inter.className} flex min-h-full flex-row bg-background text-text`}
       >
         <NextIntlClientProvider messages={messages}>
+          <MetamaskProvider>
           <CartProvider>
             <Navigation />
             {children}
             <ToastContainer theme={'dark'} position={'bottom-right'} />
           </CartProvider>
+          </MetamaskProvider>
         </NextIntlClientProvider>
       </body>
     </html>
