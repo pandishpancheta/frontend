@@ -4,7 +4,7 @@ import { ChangeEvent, useState } from 'react';
 import TagInput from '@/components/tag-input';
 import { isEmpty } from 'lodash';
 import Input from '@/components/forms/input';
-import { ABI, API_URL } from '@/configs/api';
+import { ABI, API_URL, CONTRACT_ADDRESS } from '@/configs/api';
 import { getAuth } from '@/actions/common.auth';
 import axios from 'axios';
 import { useSDK } from '@metamask/sdk-react';
@@ -101,7 +101,7 @@ const CreatePage = ({}: {
         const provider = new ethers.BrowserProvider(window.ethereum!);
         const signer = await provider.getSigner();
         const contract = new ethers.Contract(
-          "",
+          CONTRACT_ADDRESS,
           ABI,
           signer
         );

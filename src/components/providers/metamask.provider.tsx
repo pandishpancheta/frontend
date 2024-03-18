@@ -1,27 +1,21 @@
+'use client';
 import React from 'react';
 import { MetaMaskProvider } from '@metamask/sdk-react';
 
 const MetamaskProvider = ({ children }: { children: React.ReactNode }) => {
-
-    const [href, setHref] = React.useState<string>('');
-
-    React.useEffect(() => {
-        setHref(window.location.href);
-    }, []);
-
-    return (
-        <MetaMaskProvider
-            debug={true}
-                        sdkOptions={{
-                          dappMetadata: {
-                            name: "StockChain",
-                            url: href,
-                          },
-                        }}
-        >
-            {children}
-        </MetaMaskProvider>
-    );
+  return (
+    <MetaMaskProvider
+      debug={false}
+      sdkOptions={{
+        dappMetadata: {
+          name: 'StockChain',
+          url: 'http://localhost:3000/',
+        },
+      }}
+    >
+      {children}
+    </MetaMaskProvider>
+  );
 };
 
 export default MetamaskProvider;
